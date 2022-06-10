@@ -1,0 +1,373 @@
+[
+    {
+        "day":"Sunday",
+        "date":"2022-06-05",
+        "hours": [
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },
+    {
+        "day":"Monday",
+        "date":"2022-06-06",
+        "hours": [
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"8:30am","to":"5:30pm"}],
+                    "currently_open":false
+                    }
+                },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"text",
+                    "text":"On-call 11:00am-5:00pm",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"11am","to":"5pm"}],
+                    "currently_open":false
+                    }
+                },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"10am","to":"4pm"}],
+                    "currently_open":false
+                    }
+                },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"9:30am","to":"5:30pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },
+    {
+        "day":"Tuesday",
+        "date":"2022-06-07",
+        "hours":[
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"8:30am","to":"6pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"text",
+                    "text":"On-call 11:00am-5:00pm",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"11am","to":"5pm"}],
+                    "currently_open":false
+                }  
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"10am","to":"4pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"9:30am","to":"5:30pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },
+    {
+        "day":"Wednesday",
+        "date":"2022-06-08",
+        "hours":[
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"8:30am","to":"6pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"text",
+                    "text":"On-call 11:00am-5:00pm",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"11am","to":"5pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"10am","to":"4pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"9:30am","to":"5:30pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },    
+    {
+        "day":"Thursday",
+        "date":"2022-06-09",
+        "hours":[
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"8:30am","to":"6pm"}],
+                    "currently_open":true
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"text",
+                    "text":"On-call 11:00am-5:00pm",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"11am","to":"5pm"}],
+                    "currently_open":true
+                }
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"10am","to":"4pm"}],
+                    "currently_open":true
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"9:30am","to":"5:30pm"}],
+                    "currently_open":true
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },
+    {
+        "day":"Friday",
+        "date":"2022-06-10",
+        "hours":[
+            {
+                "location":"Main Library",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"8:30am","to":"6pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"text",
+                    "text":"On-call 11:00am-5:00pm",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"11am","to":"5pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"10am","to":"4pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"open",
+                    "hours":[{"from":"9:30am","to":"5:30pm"}],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    },
+    {
+        "day":"Saturday",
+        "date":"2022-06-11",
+        "hours":[
+            {
+                "location":"Main Library",
+                "times": {
+                    "status":"open",
+                    "hours":[
+                        {"from":"11am","to":"5pm"}
+                    ],
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Desk",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Research Help Online Chat",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Archives and Special Collections",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"Sound and Image Media Studios",
+                "times":{
+                    "status":"closed",
+                    "currently_open":false
+                }
+            },
+            {
+                "location":"MakerLab, Automation Lab & Digital Scholarship Lab",
+                "times":{
+                    "status":"text",
+                    "text":"Open building hours to authorized users",
+                    "currently_open":false
+                }
+            }
+        ]
+    }
+]

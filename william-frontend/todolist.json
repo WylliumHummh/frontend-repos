@@ -1,0 +1,34 @@
+{
+    "todo": [
+      {
+        "name": "HIST 109B reading",
+        "due": "2022-02-28",
+        "done": false
+      },
+      {
+        "name": "Frontend tutorial",
+        "due": "2022-02-27",
+        "done": false
+      },
+      {
+        "name": "Find a job",
+        "due": "2022-11-22",
+        "done": false
+      },
+      {
+        "name": "Buy JJK 0 tickets",
+        "due": "2022-02-25",
+        "done": true
+      },
+      {
+        "name":"Glory to Ukraine",
+        "due": "2022-02-24",
+        "done": false
+      },
+      {
+        "name":"Cook fried rice",
+        "due": "2022-06-09",
+        "done": true
+      }
+    ]
+  }
