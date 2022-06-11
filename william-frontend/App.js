@@ -13,11 +13,11 @@ const Root = createNativeStackNavigator();
 const tdListInfo = require("./todolist.json").todo;
 
 const Task = ({ name, due, done }) => (
-  <View style={styles.item}>
+  <SafeAreaView style={styles.task}>
     <Text style={{fontWeight: "bold"}}>{name}</Text>
     <Text>{due}</Text>
     <Text>{done? "checked" : "unchecked"} </Text>
-  </View>
+  </SafeAreaView>
 );
 
 /**
@@ -74,7 +74,8 @@ function Home() {
             </Button>
           </View>
         </View>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container3}>
+        <Text style= {{fontWeight: "bold", fontSize: 18, color: "brown"}}>To-Do List</Text>
         <FlatList
           data={tdListInfo.todo}
           renderItem={({item}) => renderTask(item)}
@@ -130,6 +131,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  container3: {
+    flex: 1,
+    backgroundColor: "indigo",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   navButton: {
     flex: 1, 
     backgroundColor: "#fff",
@@ -148,9 +155,10 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   task: {
-    flex: 2,
+    flex: 1,
     padding: 16,
-    backgroundColor: "indigo",
+    fontSize: 8,
+    backgroundColor: "pink",
     marginVertical: 12,
     marginHorizontal: 12,
   }
