@@ -53,7 +53,7 @@ function Home() {
   )
   }
   return ( 
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       <Text>Num is {num}</Text>
@@ -83,7 +83,7 @@ function Home() {
           extraData={checked}
         />
       </SafeAreaView>
-    </View>
+    </SafeAreaView>
   )
 }
 
