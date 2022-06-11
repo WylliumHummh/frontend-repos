@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Provider as PaperProvider } from "react-native-paper";
+import { Provider as PaperProvider, Checkbox } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, FlatList, Text, Button, View, TouchableOpacity } from "react-native";
@@ -7,26 +7,51 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import About from "./components/About.js";
 import ItemDetail from "./components/ItemDetail.js";
 import { AntDesign } from '@expo/vector-icons'; 
+import Moment from "moment";
 
 const Root = createNativeStackNavigator();
 const tdListInfo = require("./todolist.json").todo;
 
+const Task = ({ name, due, done }) => (
+  <View style={styles.item}>
+    <Text style={{fontWeight: "bold"}}>{name}</Text>
+    <Text>{due}</Text>
+    <Text>{done? "checked" : "unchecked"} </Text>
+  </View>
+);
+
+/**
+ * Gets the array from todolist.json, using an useState and useEffect.
+ * useState is inside the function since implementing it at the top causes hook errors.
+ */
 function getList() { 
-  const [tdList, setTdList] = React.useState("");
+  const [tdList, setTdList] = useState([]);
   
   useEffect(() => {
-    const toDoList = JSON.stringify(tdListInfo);
+    const toDoList = tdListInfo;
     setTdList(toDoList);
   }, [])
 }
 
-function renderItem() {
-
-}
 
 // Runs the Home Screen's text + Status Bar
 function Home() {
   const [num, setNum] = useState(0);
+  const [checked, setChecked] = useState(true);
+  /**
+ * Renders a task given from the to-do list.
+ * @param item The task we want to get the info of.
+ * @returns Text of the task's name, due date, and boolean representing it being done or not.
+ */
+ const renderTask = ({ item }) => {
+  return(
+    <Task 
+      name = {item.name}
+      due = {item.due}
+      done = {item.done}
+    />
+  )
+  }
   return ( 
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
@@ -51,10 +76,10 @@ function Home() {
         </View>
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={getList()}
-          {({item}) => renderArticle(item)}
-          keyExtractor={(item, index) => index.toString()}
-          extraData={selectedId}
+          data={tdListInfo.todo}
+          renderItem={({item}) => renderTask(item)}
+          keyExtractor={(item, index) => item.toString()}
+          extraData={checked}
         />
       </SafeAreaView>
     </View>
@@ -121,5 +146,12 @@ const styles = StyleSheet.create({
   button: {
     marginLeft: 10,
     marginRight: 10
+  },
+  task: {
+    flex: 2,
+    padding: 16,
+    backgroundColor: "indigo",
+    marginVertical: 12,
+    marginHorizontal: 12,
   }
 });
