@@ -12,17 +12,17 @@ import Moment from "moment";
 const Root = createNativeStackNavigator();
 const tdListInfo = require("./todolist.json").todo;
 
+
 // Runs the Home Screen's text + Status Bar
 function Home() {
   const [num, setNum] = useState(0);
-  const [checked, setChecked] = useState(true);
+  const [itemDone, setItemDone] = useState(false);
   /**
  * Renders a task given from the to-do list.
  * @param item The task we want to get the info of.
  * @returns Text of the task's name, due date, and boolean representing it being done or not.
  */
   const [tdList, setTdList] = useState([]);
-  const [tdData, setTdData] = useState("");
   useEffect(() => {
     const toDoList = tdListInfo;
     setTdList(toDoList);
@@ -62,15 +62,17 @@ function Home() {
           data={tdList}
           renderItem={({item}) => {
             return(
-              <TouchableOpacity style={styles.task} onPress= {markItemDone(item)}>
+              <View style={styles.task} onPress= {setItemDone(true)} >
                 <Text style={{fontWeight: "bold"}}>{item.name}</Text>
                 <Text>{item.due}</Text>
-                <Text>{item.done? "Checked" : "Unchecked"} </Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress= {markItemDone(item)}>
+                  <Text>{item.done? "Checked" : "Unchecked"} </Text>
+                </TouchableOpacity>
+              </View>
             )
           }}
           keyExtractor={(item, index) => index.toString()}
-          extraData={checked.toString()}
+          extraData={itemDone}
         />
       </SafeAreaView>
     </SafeAreaView>
