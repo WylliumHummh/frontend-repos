@@ -12,28 +12,6 @@ import Moment from "moment";
 const Root = createNativeStackNavigator();
 const tdListInfo = require("./todolist.json").todo;
 
-const Task = ({ name, due, done }) => (
-  <SafeAreaView style={styles.task}>
-    <Text style={{fontWeight: "bold"}}>{name}</Text>
-    <Text>{due}</Text>
-    <Text>{done? "checked" : "unchecked"} </Text>
-  </SafeAreaView>
-);
-
-/**
- * Gets the array from todolist.json, using an useState and useEffect.
- * useState is inside the function since implementing it at the top causes hook errors.
- */
-function getList() { 
-  const [tdList, setTdList] = useState([]);
-  
-  useEffect(() => {
-    const toDoList = tdListInfo;
-    setTdList(toDoList);
-  }, [])
-}
-
-
 // Runs the Home Screen's text + Status Bar
 function Home() {
   const [num, setNum] = useState(0);
@@ -43,15 +21,19 @@ function Home() {
  * @param item The task we want to get the info of.
  * @returns Text of the task's name, due date, and boolean representing it being done or not.
  */
- const renderTask = ({ item }) => {
-  return(
-    <Task 
-      name = {item.name}
-      due = {item.due}
-      done = {item.done}
-    />
-  )
+  const [tdList, setTdList] = useState([]);
+  const [tdData, setTdData] = useState("");
+  useEffect(() => {
+    const toDoList = tdListInfo;
+    setTdList(toDoList);
+  }, [])
+
+  function markItemDone(index){
+    let todoCopy = tdList;
+    todoCopy.done = !todoCopy.done;
+    setTdList(todoCopy);
   }
+
   return ( 
     <SafeAreaView style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
@@ -75,12 +57,20 @@ function Home() {
           </View>
         </View>
       <SafeAreaView style={styles.container3}>
-        <Text style= {{fontWeight: "bold", fontSize: 18, color: "brown"}}>To-Do List</Text>
+        <Text style= {{fontWeight: "bold", fontSize: 18, color: "cyan"}}>To-Do List</Text>
         <FlatList
-          data={tdListInfo.todo}
-          renderItem={({item}) => renderTask(item)}
-          keyExtractor={(item, index) => item.toString()}
-          extraData={checked}
+          data={tdList}
+          renderItem={({item}) => {
+            return(
+              <TouchableOpacity style={styles.task} onPress= {markItemDone(item)}>
+                <Text style={{fontWeight: "bold"}}>{item.name}</Text>
+                <Text>{item.due}</Text>
+                <Text>{item.done? "Checked" : "Unchecked"} </Text>
+              </TouchableOpacity>
+            )
+          }}
+          keyExtractor={(item, index) => index.toString()}
+          extraData={checked.toString()}
         />
       </SafeAreaView>
     </SafeAreaView>
@@ -133,9 +123,10 @@ const styles = StyleSheet.create({
   },
   container3: {
     flex: 1,
-    backgroundColor: "indigo",
+    backgroundColor: "brown",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 10
   },
   navButton: {
     flex: 1, 
