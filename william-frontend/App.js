@@ -7,16 +7,17 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import About from "./components/About.js";
 import ItemDetail from "./components/ItemDetail.js";
 import { AntDesign } from "@expo/vector-icons"; 
-import Moment from "moment";
 
 const Root = createNativeStackNavigator();
 const tdListInfo = require("./todolist.json").todo;
 
-
 // Runs the Home Screen's text + Status Bar
 function Home() {
+  const moment = require("moment");
   const [num, setNum] = useState(0);
-  const [itemDone, setItemDone] = useState(false);
+  const [itemUpdate, setItemUpdate] = useState(false);
+  const [checkList, setCheckList] = useState([]);
+  const [checkToggle, setCheckToggle] = useState(false);
   /**
  * Renders a task given from the to-do list.
  * @param item The task we want to get the info of.
@@ -28,15 +29,27 @@ function Home() {
     setTdList(toDoList);
   }, []);
 
-  function markItemDone(index){
-    let todoCopy = tdList;
-    todoCopy(index).done = !todoCopy(index).done;
-    setTdList(todoCopy);
+  /**
+   * Filters the array for Unchecked items only, and makes a copy of the filtered array, which the second FlatList will use.
+   */
+  function toggleChecked(){
+    let todoCopy = tdList.filter((element) => { if (element.done == false) {return element;} } );
+    setCheckList(todoCopy);
+    setCheckToggle(!checkToggle);
   }
 
+  function markItemDone(index){
+    let todoCopy = tdList;
+    todoCopy[index].done = !todoCopy[index].done;
+    setTdList(todoCopy);
+    setItemUpdate(!itemUpdate);
+  }
+  /**
+   * Renders the Home page, including the Num and its button, as well as one of two FlatLists depending on checkToggle.
+   */
   return ( 
     <SafeAreaView style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Frontend Tutorial App!</Text>
       <StatusBar style="auto" />
       <Text>Num is {num}</Text>
       <View style={styles.numButtons}>
@@ -57,23 +70,42 @@ function Home() {
         </View>
       </View>
       <SafeAreaView style={styles.container3}>
-        <Text style= {{fontWeight: "bold", fontSize: 18, color: "cyan"}}>To-Do List</Text>
-        <FlatList
-          data={tdList}
-          renderItem={({item}) => {
-            return(
-              <View style={styles.task} onPress= {setItemDone(true)} >
-                <Text style={{fontWeight: "bold"}}>{item.name}</Text>
-                <Text>{item.due}</Text>
-                <TouchableOpacity onPress= {markItemDone(item)}>
+        <View style = {{flexDirection: "row"}}>
+          <Text style= {{fontWeight: "bold", fontSize: 18, color: "cyan"}}>To-Do List</Text>
+          <Button title="Toggle Checked Items" mode={"contained"} color="orange" onPress={() => toggleChecked()}>
+            Shows or hides items that are checked.
+          </Button>
+        </View>
+        {checkToggle? (
+          <FlatList
+            data={tdList}
+            renderItem={({item, index}) => {
+              return(
+                <TouchableOpacity style={styles.task} onPress={() => markItemDone(index)}>
+                  <Text style={{fontWeight: "bold"}}>{item.name}</Text>
+                  <Text>{moment(item.due).startOf("hour").fromNow()} </Text>
                   <Text>{item.done? "Checked" : "Unchecked"} </Text>
                 </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(item, index) => index.toString()}
-          extraData={itemDone}
-        />
+              );
+            }}
+            keyExtractor={(item, index) => index.toString()}
+            extraData={itemUpdate}
+          />) : 
+          (<FlatList
+            data={checkList}
+            renderItem={({item, index}) => {
+              return(
+                <TouchableOpacity style={styles.task} onPress={() => markItemDone(index)}>
+                  <Text style={{fontWeight: "bold"}}>{item.name}</Text>
+                  <Text>{moment(item.due).startOf("hour").fromNow()} </Text>
+                  <Text>{item.done? "Checked" : "Unchecked"} </Text>
+                </TouchableOpacity>
+              );
+            }}
+            keyExtractor={(item, index) => index.toString()}
+            extraData={itemUpdate}
+          />
+          )}
       </SafeAreaView>
     </SafeAreaView>
   );
@@ -145,7 +177,8 @@ const styles = StyleSheet.create({
   },
   button: {
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    marginBottom: 10
   },
   task: {
     flex: 1,
